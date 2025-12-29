@@ -9,7 +9,7 @@ def do_app_checks():
 
 async def main():
     do_app_checks()
-    message = "Send a cold sales email addressed to 'Dear CEO'"
+    message = "Send a cold sales email addressed to Dear CEO from Head of Sales Management"
     with trace("Automated SDR"):
       result = await Runner.run(get_sales_manager_agent(), message)
       print(result)
