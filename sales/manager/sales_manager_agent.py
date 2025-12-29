@@ -1,6 +1,7 @@
 from agents import Agent
 from handoffs.emailer_agent import get_emailer_agent
 from tools.sales_tools import get_sales_agents_as_tools
+from guardrails.guardrail_agent import guardrail_against_name
 
 sales_manager_instructions = """
 You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.
@@ -24,6 +25,7 @@ def get_sales_manager_agent():
        instructions=sales_manager_instructions,
        tools=get_sales_agents_as_tools(),
        handoffs=[get_emailer_agent()],
-       model="gpt-4o-mini"
+       model="gpt-4o-mini",
+       input_guardrails=[guardrail_against_name]
    )
    return sales_manager
